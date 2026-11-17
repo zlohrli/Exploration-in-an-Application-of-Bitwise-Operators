@@ -62,7 +62,7 @@ int validator(int octets[OCTETS], int id) {
                 return 1;
             }
 
-            if (octets[i] < 255) {
+            if (octets[i] < OCTET_MAX) {
                 found_non_255 = 1;
             }
         }
@@ -73,7 +73,7 @@ int validator(int octets[OCTETS], int id) {
 int decimal_to_cidr(int octets[OCTETS]) {
     int cidr = 0;
     for (int i = 0; i < OCTETS; i++) {
-        if (octets[i] == 255) {
+        if (octets[i] == OCTET_MAX) {
             cidr += 8;
         } else {
             for (int j = 0; j < sizeof(subnet_values) / sizeof(int); j++) {
