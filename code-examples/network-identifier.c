@@ -7,6 +7,7 @@
 #define OCTET_MAX 255
 #define SUBNET 1
 #define IP 0
+#define CIDR_MAX 32
 
 static const int subnet_values[] = {0, 128, 192, 224, 240, 248, 252, 254, 255};
 
@@ -93,7 +94,7 @@ int main() {
         "include periods.\n");
 
     while (initialization(ip_octets, IP) == 1) {
-        printf("Incorrect formatting.\n");
+        printf("Incorrect formatting or values.\n");
         printf(
             "Enter all IP addresses and subnet masks in decimal.\nMake sure to "
             "include periods.\n");
@@ -103,6 +104,9 @@ int main() {
 
     while (initialization(subnet_octets, SUBNET) == 1) {
         printf("Incorrect format or values.\n");
+        printf(
+            "Enter all IP addresses and subnet masks in decimal.\nMake sure to "
+            "include periods.\n");
     }
 
     int cidr = decimal_to_cidr(subnet_octets);
@@ -116,6 +120,20 @@ int main() {
     printf("Network Address: %d.%d.%d.%d\n", network_octets[0],
            network_octets[1], network_octets[2], network_octets[3]);
     printf("CIDR Value: /%d\n", cidr);
+
+    int possible_ips = 1 << (CIDR_MAX - cidr);
+    printf("IPs on Same Network: %d\n", possible_ips);
+
+    printf("Network IP Range: %d.%d.%d.%d to ", network_octets[0],
+           network_octets[1], network_octets[2], network_octets[3]);
+
+    network_octets[0] |= ((possible_ips - 1) >> 24) & 0xFF;
+    network_octets[1] |= ((possible_ips - 1) >> 16) & 0xFF;
+    network_octets[2] |= ((possible_ips - 1) >> 8) & 0xFF;
+    network_octets[3] |= (possible_ips - 1) & 0xFF;
+
+    printf("%d.%d.%d.%d\n", network_octets[0], network_octets[1],
+           network_octets[2], network_octets[3]);
 
     return 0;
 }
