@@ -4,7 +4,8 @@ An exploration into how subnet masks and bitwise AND operations are used to dete
 All devices on IPv4 networks have an IP (internet protocol) address and a subnet mask.
 
 ### IP Address:
-A unique 32-bit numerical label which is assigned to every device connected to a computer network. It identifies the network and the host/device. It is usually represented in dotted decimal notation as four 8-bit octets.
+A unique 32-bit numerical label which is assigned to every device connected to a computer network. It identifies the network and 
+the host/device. It is usually represented in dotted decimal notation as four 8-bit octets.
 Example -- 192.168.1.45
 
 ### Subnet Mask:
