@@ -21,3 +21,10 @@ masks and IP addresses are used to make that determination.
 Using a bitwise AND operation, all the 1s in the subnet mask maintain the network address and the 0s negate any of the device
 specific identifiers. You end up with a pure network address which you can compare with the other network address to determine
 if it is on the same network.
+
+Presentation:
+https://docs.google.com/presentation/d/1MSTeRfMm35hje2UFWKgvRDuJnRx7Lnta6vAYIMwq8r4/edit slide=id.hbb252406f2cfa62_0_101#slide=id.hbb252406f2cfa62_0_101
+
+Sources:
+https://share.gemini.google/eG48A1dVNLFr
+https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/How_does_the_Internet_work
